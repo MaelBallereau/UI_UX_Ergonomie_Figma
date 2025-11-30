@@ -1,0 +1,435 @@
+/* =========================
+   Variables
+========================= */
+:root {
+  --bg: #f3f4f6;
+  --primary: #1c3f80;
+  --error: #D64545;
+  --card: #ffffff;
+  --accent: #79f8f8;
+  --transition: 0.3s ease;
+}
+
+/* =========================
+   Reset & Base Styles
+========================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* =========================
+   Canvas
+========================= */
+.canvas {
+  max-width: 900px;
+  margin: 28px auto;
+  position: relative;
+  background: var(--card);
+  border-radius: 20px;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  transition: box-shadow var(--transition);
+}
+
+.canvas:hover {
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* =========================
+   Topbar
+========================= */
+.topbar {
+  height: 72px;
+  background: var(--primary);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 18px;
+  transition: background var(--transition);
+}
+
+
+
+.nav {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.nav a {
+  color: #fff;
+  opacity: 0.95;
+  transition: opacity var(--transition);
+}
+
+.nav a:hover {
+  opacity: 1;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* =========================
+   Profile
+========================= */
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: transform var(--transition);
+}
+
+.avatar:hover {
+  transform: scale(1.1);
+}
+
+.logout {
+  background: #fff;
+  border-radius: 18px;
+  padding: 6px 10px;
+  border: 0;
+  color: var(--error);
+  cursor: pointer;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  transition: background var(--transition), color var(--transition);
+}
+
+.logout:hover {
+  background: var(--error);
+  color: #fff;
+}
+
+/* =========================
+   Left Rail
+========================= */
+.left-rail {
+  z-index: 10;
+  position: absolute;
+  left: 6px;
+  top: 0px;
+  width: 180px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+  box-shadow: 0 8px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  transition: transform var(--transition);
+}
+
+.left-rail:hover {
+  transform: translateX(2px);
+}
+
+.left-rail .cta {
+  background: #4a6fa5;
+  color: #fff;
+  border-radius: 18px;
+  border: 0;
+  padding: 10px 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition), transform var(--transition);
+}
+
+.left-rail .cta:hover {
+  background: #3b5a87;
+  transform: translateY(-2px);
+}
+
+/* =========================
+   Main Stage & Promo
+========================= */
+.main {
+  position: relative;
+}
+
+.stage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 2rem;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+.promo {
+  background: var(--bg);
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 18px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
+  width: 50%;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+
+
+/* =========================
+   Chat Card
+========================= */
+.chat-card {
+  width: 380px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 14px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 8px 4px rgba(0, 0, 0, 0.2);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+
+
+.chat-header {
+  display: flex;
+  align-items: center;  
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.bot-icon img {
+  width: 34px;
+  height: 34px;
+}
+
+.chat-title {
+  font-weight: 600;
+}
+
+.right-meta {
+  margin-left: auto;
+  text-align: right;
+  font-size: 12px;
+  color: #333;
+}
+
+/* =========================
+   Messages
+========================= */
+.messages {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 8px 2px;
+}
+
+.message {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.message.bot .bubble {
+  background: #7ef8f8;
+  padding: 12px;
+  border-radius: 8px;
+  max-width: 220px;
+  transition: transform var(--transition);
+}
+
+.message.bot .bubble:hover {
+  transform: scale(1.05);
+}
+
+.message.user {
+  justify-content: flex-end;
+}
+
+.message.user.small .bubble {
+  background: #ddd;
+  color: #222;
+  padding: 10px;
+  border-radius: 8px;
+  max-width: 160px;
+}
+
+/* =========================
+   Chat Input
+========================= */
+.chat-input {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 12px;
+  border-radius: 22px;
+  border: 1px solid #ddd;
+  background: #eee;
+  transition: border var(--transition);
+}
+
+.chat-input input:focus {
+  border-color: var(--primary);
+  outline: none;
+}
+
+.chat-input button {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 0;
+  background: #4a6fa5;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background var(--transition), transform var(--transition);
+}
+
+.chat-input button:hover {
+  background: #3b5a87;
+  transform: scale(1.1);
+}
+
+/* =========================
+   Mic Button
+========================= */
+.mic {
+  position: absolute;
+  right: 22px;
+  bottom: 22px;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #3b6aa1;
+  border: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  transition: transform var(--transition), background var(--transition);
+}
+
+.mic:hover {
+  transform: scale(1.1);
+  background: #2a4a7a;
+}
+
+.mic img {
+  width: 34px;
+  height: 34px;
+}
+
+/* =========================
+   Logo
+========================= */
+.logo {
+  width: 48px;
+  height: 48px;
+  border: 2px solid white;
+  border-radius: 15px;
+  padding: 0.2rem;
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
+}
+
+/* =========================
+   Responsive
+========================= */
+@media (max-width: 780px) {
+  .canvas {
+    margin: 12px;
+  }
+  .stage {
+    padding-left: 18px;
+  }
+}
+
+/* =========================
+   Animations
+========================= */
+@keyframes fadeIn {
+  0% {opacity: 0; transform: translateY(10px);}
+  100% {opacity: 1; transform: translateY(0);}
+}
+
+
+/* =========================
+   Responsive Left Rail
+========================= */
+@media (max-width: 1024px) {
+  .left-rail {
+    position: relative; /* devient inline dans le flux */
+    top: 0;
+    left: 0;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 8px 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+  }
+
+  .left-rail .cta {
+    padding: 8px 10px;
+    font-size: 14px;
+    flex: 1;
+    text-align: center;
+  }
+  .chat-card{
+    margin-right: 6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .left-rail {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 8px 16px;
+    border-radius: 0;
+    box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
+    background: var(--card);
+  }
+
+  .left-rail .cta {
+    flex: 1;
+  }
+  
+}
